@@ -1,9 +1,8 @@
 import type { IColumn } from '@/components/Table/typing';
-import { Button, Form, Input, Modal, Table, DatePicker } from 'antd';
+import { Button, Form, Input, InputNumber, Modal, Table } from 'antd';
 import { useEffect, useState } from 'react';
 // import { useModel } from 'umi';
 import useModel from '@/models/quanlymonhoc';
-import moment from 'moment';
 
 const QuanLyMonHoc = () => {
 	const { data, getDataMonHoc } = useModel();
@@ -16,40 +15,22 @@ const QuanLyMonHoc = () => {
 
 	const columns: IColumn<QuanLyMonHoc.Record>[] = [
 		{
+			title: 'Mã môn',
+			dataIndex: 'ma_mon',
+			key: 'ma_mon',
+			width: 200,
+		},
+		{
 			title: 'Tên môn',
 			dataIndex: 'ten_mon',
 			key: 'ten_mon',
 			width: 200,
 		},
 		{
-			title: 'Ngày bắt đầu',
-			dataIndex: 'ngay_bat_dau',
-			key: 'ngay_bat_dau',
-			width: 100,
-		},
-		{
-			title: 'Ngày kết thúc',
-			dataIndex: 'ngay_ket_thuc',
-			key: 'ngay_ket_thuc',
-			width: 100,
-		},
-		{
-			title: 'Thời lượng học',
-			dataIndex: 'thoi_luong_hoc',
-			key: 'thoi_luong_hoc',
-			width: 100,
-		},
-		{
-			title: 'Nội dung đã học',
-			dataIndex: 'noi_dung_da_hoc',
-			key: 'noi_dung_da_hoc',
-			width: 100,
-		},
-		{
-			title: 'Ghi chú',
-			dataIndex: 'ghi_chu',
-			key: 'ghi_chu',
-			width: 100,
+			title: 'Tin chỉ',
+			dataIndex: 'so_tin_chi',
+			key: 'so_tin_chi',
+			width: 200,
 		},
 		{
 			title: 'Sửa/xóa',
@@ -124,6 +105,14 @@ const QuanLyMonHoc = () => {
 					}}
 				>
 					<Form.Item
+						initialValue={row?.ma_mon}
+						label='Mã môn'
+						name='ma_mon'
+						rules={[{ required: true, message: 'Please input your ma_mon!' }]}
+					>
+						<Input />
+					</Form.Item>
+					<Form.Item
 						initialValue={row?.ten_mon}
 						label='Tên môn'
 						name='ten_mon'
@@ -132,44 +121,12 @@ const QuanLyMonHoc = () => {
 						<Input />
 					</Form.Item>
 					<Form.Item
-						initialValue={row?.ngay_bat_dau ? moment(row.ngay_bat_dau) : null}
-						label='Ngày bắt đầu'
-						name='ngay_bat_dau'
-						rules={[{ required: true, message: 'Please input your ngay_bat_dau!' }]}
+						initialValue={row?.so_tin_chi}
+						label='Số tín chỉ'
+						name='so_tin_chi'
+						rules={[{ required: true, message: 'Please input your so_tin_chi!' }]}
 					>
-						<DatePicker />
-					</Form.Item>
-					<Form.Item
-						initialValue={row?.ngay_ket_thuc ? moment(row.ngay_ket_thuc) : null}
-						label='Ngày kết thúc'
-						name='ngay_ket_thuc'
-						rules={[{ required: true, message: 'Please input your ngay_ket_thuc!' }]}
-					>
-						<DatePicker />
-					</Form.Item>
-					<Form.Item
-						initialValue={row?.thoi_luong_hoc}
-						label='Thời lượng học'
-						name='thoi_luong_hoc'
-						rules={[{ required: true, message: 'Please input your thoi_luong_hoc!' }]}
-					>
-						<Input />
-					</Form.Item>
-					<Form.Item
-						initialValue={row?.noi_dung_da_hoc}
-						label='Nội dung đã học'
-						name='noi_dung_da_hoc'
-						rules={[{ required: true, message: 'Please input your noi_dung_da_hoc!' }]}
-					>
-						<Input />
-					</Form.Item>
-					<Form.Item
-						initialValue={row?.ghi_chu}
-						label='Ghi chú'
-						name='ghi_chu'
-						rules={[{ required: true, message: 'Please input your ghi_chu!' }]}
-					>
-						<Input />
+						<InputNumber min={1} />
 					</Form.Item>
 					<div className='form-footer'>
 						<Button htmlType='submit' type='primary'>

@@ -48,6 +48,18 @@
 		component: './QuanLyMonHoc',
 		icon: 'BookOutlined',
 	},
+	{
+		path: '/quan-ly-cau-hoi',
+		name: 'Quản lý câu hỏi',
+		component: './QuanLyCauHoi',
+		icon: 'QuestionOutlined',
+	},
+	{
+		path: '/quan-ly-de-thi',
+		name: 'Quản lý đề thi',
+		component: './QuanLyDeThi',
+		icon: 'FileTextOutlined',
+	},
 
 	// DANH MUC HE THONG
 	// {
