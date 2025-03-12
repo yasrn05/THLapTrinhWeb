@@ -3,6 +3,7 @@ import type { IColumn } from '@/components/Table/typing';
 import { useEffect, useState } from 'react';
 import useModel from '@/models/schedulemanagement';
 import moment from 'moment';
+import './ScheduleManagement.less'; // Import the LESS file
 
 const { Option } = Select;
 
@@ -76,17 +77,19 @@ const ScheduleManagement = () => {
 	];
 
 	return (
-		<div>
-			<Button
-				type='primary'
-				onClick={() => {
-					setVisible(true);
-					setIsEdit(false);
-				}}
-			>
-				Add new
-			</Button>
-			<Table dataSource={data} columns={columns} />
+		<div className="schedule-management-container">
+			<div className="schedule-management-header">
+				<Button
+					type='primary'
+					onClick={() => {
+						setVisible(true);
+						setIsEdit(false);
+					}}
+				>
+					Add new
+				</Button>
+			</div>
+			<Table className="schedule-management-table" dataSource={data} columns={columns} />
 			<Modal
 				destroyOnClose
 				footer={false}

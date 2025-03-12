@@ -3,6 +3,7 @@ import type { IColumn } from '@/components/Table/typing';
 import { useEffect, useState } from 'react';
 import useModel from '@/models/servicemanagement';
 import moment from 'moment';
+import './ServiceManagement.less';
 
 const ServiceManagement = () => {
 	const { data, getDataServiceManagement } = useModel();
@@ -80,17 +81,19 @@ const ServiceManagement = () => {
 	];
 
 	return (
-		<div>
-			<Button
-				type='primary'
-				onClick={() => {
-					setVisible(true);
-					setIsEdit(false);
-				}}
-			>
-				Add new
-			</Button>
-			<Table dataSource={data} columns={columns} />
+		<div className="service-management-container">
+			<div className="service-management-header">
+				<Button
+					type='primary'
+					onClick={() => {
+						setVisible(true);
+						setIsEdit(false);
+					}}
+				>
+					Add new
+				</Button>
+			</div>
+			<Table className="service-management-table" dataSource={data} columns={columns} />
 			<Modal
 				destroyOnClose
 				footer={false}

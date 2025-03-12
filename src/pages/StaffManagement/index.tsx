@@ -4,6 +4,7 @@ import type { IColumn } from '@/components/Table/typing';
 import { useEffect, useState } from 'react';
 import useModel from '@/models/staffmanagement';
 import useScheduleModel from '@/models/schedulemanagement';
+import './StaffManagement.less'; // Import the LESS file
 
 const StaffManagement = () => {
 	const { data, getDataStaffManagement } = useModel();
@@ -77,17 +78,19 @@ const StaffManagement = () => {
 	];
 
 	return (
-		<div>
-			<Button
-				type='primary'
-				onClick={() => {
-					setVisible(true);
-					setIsEdit(false);
-				}}
-			>
-				Add new
-			</Button>
-			<Table dataSource={data} columns={columns} />
+		<div className="staff-management-container">
+			<div className="staff-management-header">
+				<Button
+					type='primary'
+					onClick={() => {
+						setVisible(true);
+						setIsEdit(false);
+					}}
+				>
+					Add new
+				</Button>
+			</div>
+			<Table className="staff-management-table" dataSource={data} columns={columns} />
 			<Modal
 				destroyOnClose
 				footer={false}
