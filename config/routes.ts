@@ -60,6 +60,24 @@
 		component: './QuanLyDeThi',
 		icon: 'FileTextOutlined',
 	},
+	{
+		path: '/staff-management',
+		name: 'Staff Management',
+		component: './StaffManagement',
+		icon: 'UserOutlined',
+	},
+	{
+		path: '/service-management',
+		name: 'Service Management',
+		component: './ServiceManagement',
+		icon: 'ToolOutlined',
+	},
+	{
+		path: '/schedule-management',
+		name: 'Schedule Management',
+		component: './ScheduleManagement',
+		icon: 'CalendarOutlined',
+	},
 
 	// DANH MUC HE THONG
 	// {
