@@ -5,10 +5,10 @@ export default () => {
 	const [data, setData] = useState([]);
 
 	const getDataServiceManagement = async () => {
-		const dataLocal: any = JSON.parse(localStorage.getItem('data_services') as any);
+		const dataLocal: any = JSON.parse(localStorage.getItem('data_service') as any);
 		if (!dataLocal?.length) {
 			const res = { data: [] };
-			localStorage.setItem('data_services', JSON.stringify(res?.data ?? []));
+			localStorage.setItem('data_service', JSON.stringify(res?.data ?? []));
 			setData(res?.data ?? []);
 			return;
 		}
